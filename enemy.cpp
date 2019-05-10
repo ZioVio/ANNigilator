@@ -9,6 +9,8 @@
 
 extern Game * game;
 
+extern int score;
+
 Enemy::Enemy()
 {
     //drew the rect
@@ -19,7 +21,7 @@ Enemy::Enemy()
     setPos(randEnemyPos,0);
 
 
-    setPixmap(QPixmap(":/images/enemy"+ QString::number(randEnemy) +".png").scaled(QSize(100,100)));
+    setPixmap(QPixmap(":/images/images/enemies/enemy"+ QString::number(randEnemy) +".png").scaled(QSize(100,100)));
 
 
     //connect
@@ -32,14 +34,13 @@ Enemy::Enemy()
 
 void Enemy::move()
 {
-    setPos(x(),y()+10);
+    setPos(x(),y()+10 + (float)score/10);
+    qDebug() << score;
     if(pos().y() + 100 > 600)
     {
         game->player->score -= 10;
         game->bar->setValue(game->player->score);
         scene()->removeItem(this);
-        qDebug() << "deleted";
-
         delete this;
     }
 }

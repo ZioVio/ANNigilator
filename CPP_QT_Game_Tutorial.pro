@@ -31,16 +31,24 @@ SOURCES += \
     bullet.cpp \
     enemy.cpp \
     game.cpp \
-    player.cpp
+    player.cpp \
+    dialog.cpp \
+    win.cpp
 
 HEADERS += \
     bullet.h \
     enemy.h \
     game.h \
-    player.h
+    player.h \
+    dialog.h \
+    win.h
 
 
 
 RESOURCES += \
-    res.qrc \
+    res.qrc
+
+FORMS += \
+    dialog.ui \
+    win.ui
 
