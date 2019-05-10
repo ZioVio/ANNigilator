@@ -33,7 +33,8 @@ SOURCES += \
     game.cpp \
     player.cpp \
     dialog.cpp \
-    win.cpp
+    win.cpp \
+    lose.cpp
 
 HEADERS += \
     bullet.h \
@@ -41,7 +42,8 @@ HEADERS += \
     game.h \
     player.h \
     dialog.h \
-    win.h
+    win.h \
+    lose.h
 
 
 
@@ -50,5 +52,10 @@ RESOURCES += \
 
 FORMS += \
     dialog.ui \
-    win.ui
+    win.ui \
+    lose.ui
+
+DISTFILES += \
+    images/lose.gif \
+    sounds/lose.mp3
 

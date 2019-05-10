@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <cstdlib>
 #include "game.h"
+#include "lose.h"
 
 extern Game * game;
 
@@ -34,13 +35,23 @@ Enemy::Enemy()
 
 void Enemy::move()
 {
-    setPos(x(),y()+10 + (float)score/10);
-    qDebug() << score;
+
+    static bool lose_flag = false;
+    setPos(x(),y()+ 15 + (float)score/10);
     if(pos().y() + 100 > 600)
     {
         game->player->score -= 10;
         game->bar->setValue(game->player->score);
-        scene()->removeItem(this);
+        if (this != nullptr && !game->window()->isHidden())
+            scene()->removeItem(this);
         delete this;
+        if (game->player->score < 0 && !lose_flag) {
+           lose_flag = true;
+           lose dialog;
+           dialog.exec();
+           game->window()->setHidden(true);
+           game->window()->close();
+       }
     }
+
 }

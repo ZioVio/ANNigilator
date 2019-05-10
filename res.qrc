@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/sounds">
         <file>sounds/bg_music.mp3</file>
+        <file>sounds/win.wav</file>
     </qresource>
     <qresource prefix="/images">
         <file>images/enemies/enemy1.png</file>
@@ -13,7 +14,10 @@
         <file>images/other/bullet.png</file>
         <file>images/player/player1.png</file>
         <file>images/player/player1shooting.png</file>
-        <file>images/sad.gif</file>
         <file>images/win.gif</file>
+        <file>images/lose.gif</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>sounds/lose.mp3</file>
     </qresource>
 </RCC>

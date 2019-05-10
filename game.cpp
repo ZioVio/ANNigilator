@@ -8,6 +8,10 @@
 
 extern int score;
 
+QGraphicsView * view;
+
+QMediaPlayer * music;
+
 Game::Game(QWidget *parent)
 {
     //creating scene
@@ -25,8 +29,8 @@ Game::Game(QWidget *parent)
     //add progressBar
 
     bar = new QProgressBar();
-    bar->setMaximum(100);
-    bar->setMinimum(-100);
+    bar->setMaximum(200);
+    bar->setMinimum(0);
     bar->setOrientation(Qt::Orientation::Vertical);
 
     //set progressBar pos
@@ -45,7 +49,7 @@ Game::Game(QWidget *parent)
     player->setFocus();
 
     //add a view
-    QGraphicsView *view = new QGraphicsView(scene);
+    view = new QGraphicsView(scene);
 
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -71,9 +75,10 @@ Game::Game(QWidget *parent)
     playlist->addMedia(QUrl("qrc:/sounds/sounds/bg_music.mp3"));
     playlist->setPlaybackMode(QMediaPlaylist::Loop);
 
-    QMediaPlayer * music  = new QMediaPlayer();
+    music  = new QMediaPlayer();
     music->setPlaylist(playlist);
     music->play();
+    view->setWindowTitle("IGRA");
 
     view->show();
 

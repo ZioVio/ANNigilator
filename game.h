@@ -19,8 +19,8 @@ public:
     Player * player;
     QProgressBar * bar;
 
-
-
 };
 
 //#endif // GAME_H
+
+

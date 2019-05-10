@@ -9,6 +9,7 @@
 #include <QList>
 #include "game.h"
 #include "win.h"
+#include "lose.h"
 
 extern Game * game;
 
@@ -40,30 +41,21 @@ void Bullet::move()
            game->player->score +=10;
            score = game->player->score;
            game->bar->setValue(game->player->score);
-           if (game->player->score >= 100) {
-//               QMovie *movie = new QMovie("qrc:/images/images/win.gif");
-//               if (!movie->isValid())
-//                   {
-//                    qDebug() << "PIZDA";
-//                   }
-//               QLabel *processLabel = new QLabel(game);
-//               processLabel->resize(800, 600);
-//               processLabel->setMovie(movie);
-//               game->scene->addWidget(processLabel);
-//               processLabel->raise();
-//               movie->start();
+           static bool flag = false;
+           if (game->player->score >= 200 && !flag) {
+               flag = true;
                win dialog;
                dialog.exec();
-               abort();
-//               scene()->addPixmap(QPixmap(":/images/images/win.gif").scaled(QSize(800,600)));
+               game->setHidden(true);
+//               game->window()->close();
            }
-
-
            delete colliding_items[i];
            delete this;
            return;
         }
     }
+
+
 
 
     setPos(x(),y()-10);

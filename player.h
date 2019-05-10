@@ -10,7 +10,7 @@ class Player :public QObject, public QGraphicsPixmapItem
     Q_OBJECT
 public:
     Player();
-    int score = -50;
+    int score = 10;
     void keyPressEvent(QKeyEvent * event);
 public slots:
     void spawn();
